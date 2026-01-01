@@ -4,19 +4,17 @@ import 'package:recipe_finder_flutter/features/home/ui/widgets/cuisine_card_widg
 class CuisineItemsWidget extends StatelessWidget {
   final List<String> cuisines;
   final String? selectedCuisine;
-  final Function(String) onSelect;
 
   const CuisineItemsWidget({
     super.key,
     required this.cuisines,
-    this.selectedCuisine,
-    required this.onSelect,
+    this.selectedCuisine
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 45, // Fixed height for the chip row
+      height: 45,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -26,7 +24,9 @@ class CuisineItemsWidget extends StatelessWidget {
           return CuisineCard(
             cuisine: cuisine,
             isSelected: cuisine == selectedCuisine,
-            onTap: () => onSelect(cuisine),
+            onTap: () => {
+              // Handle cuisine selection
+            },
           );
         },
       ),

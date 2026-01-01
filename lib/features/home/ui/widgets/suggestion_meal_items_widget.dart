@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_finder_flutter/features/home/ui/widgets/suggestion_meal_card_widget.dart';
+import 'package:recipe_finder_flutter/routes/app_routes.dart';
 
 class SuggestionMealItemsWidget extends StatelessWidget {
   final List<dynamic> meals; // Replace with your Meal model
@@ -20,7 +21,13 @@ class SuggestionMealItemsWidget extends StatelessWidget {
             name: meal.name,
             cuisine: meal.area ?? 'Unknown',
             imageUrl: meal.thumbnailUrl,
-            onTap: () => print('Tapped ${meal.id}'),
+            onTap: () {
+              Navigator.pushNamed(
+                context,
+                AppRoutes.mealDetail,
+                arguments: meal,
+              );
+            },
           );
         },
       ),
