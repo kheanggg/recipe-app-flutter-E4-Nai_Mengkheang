@@ -8,14 +8,14 @@ class Meal {
   final int id;
 
   @JsonKey(name: 'meal')
-  final String title;
+  final String name;
 
   final String category;
   final String area;
   final String instructions;
 
   @JsonKey(name: 'mealThumb')
-  final String imageUrl;
+  final String thumbnailUrl;
 
   final String? tags;
   final String? youtube;
@@ -28,11 +28,11 @@ class Meal {
 
   Meal({
     required this.id,
-    required this.title,
+    required this.name,
     required this.category,
     required this.area,
     required this.instructions,
-    required this.imageUrl,
+    required this.thumbnailUrl,
     this.tags,
     this.youtube,
     this.source,

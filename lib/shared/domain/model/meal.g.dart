@@ -8,11 +8,11 @@ part of 'meal.dart';
 
 Meal _$MealFromJson(Map<String, dynamic> json) => Meal(
   id: Meal._stringToInt(json['id']),
-  title: json['meal'] as String,
+  name: json['meal'] as String,
   category: json['category'] as String,
   area: json['area'] as String,
   instructions: json['instructions'] as String,
-  imageUrl: json['mealThumb'] as String,
+  thumbnailUrl: json['mealThumb'] as String,
   tags: json['tags'] as String?,
   youtube: json['youtube'] as String?,
   source: json['source'] as String?,
@@ -24,11 +24,11 @@ Meal _$MealFromJson(Map<String, dynamic> json) => Meal(
 
 Map<String, dynamic> _$MealToJson(Meal instance) => <String, dynamic>{
   'id': instance.id,
-  'meal': instance.title,
+  'meal': instance.name,
   'category': instance.category,
   'area': instance.area,
   'instructions': instance.instructions,
-  'mealThumb': instance.imageUrl,
+  'mealThumb': instance.thumbnailUrl,
   'tags': instance.tags,
   'youtube': instance.youtube,
   'source': instance.source,

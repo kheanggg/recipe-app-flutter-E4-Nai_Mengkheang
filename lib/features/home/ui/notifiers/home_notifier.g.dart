@@ -175,3 +175,42 @@ final class HomeMealsFamily extends $Family
   @override
   String toString() => r'homeMealsProvider';
 }
+
+@ProviderFor(homeCuisines)
+const homeCuisinesProvider = HomeCuisinesProvider._();
+
+final class HomeCuisinesProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<String>>,
+          List<String>,
+          FutureOr<List<String>>
+        >
+    with $FutureModifier<List<String>>, $FutureProvider<List<String>> {
+  const HomeCuisinesProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'homeCuisinesProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$homeCuisinesHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<String>> $createElement(
+    $ProviderPointer pointer,
+  ) => $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<String>> create(Ref ref) {
+    return homeCuisines(ref);
+  }
+}
+
+String _$homeCuisinesHash() => r'44e5c2d42f09e44c13308080348dc8e949f2050d';

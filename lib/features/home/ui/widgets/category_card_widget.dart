@@ -12,8 +12,7 @@ class CategoryCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Define a single size variable to ensure it stays square
-    const double squareSize = 100.0; 
+    const double squareSize = 90.0; 
 
     return GestureDetector(
       onTap: onTap,
@@ -31,9 +30,9 @@ class CategoryCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20), 
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.black.withOpacity(0.05),
-                    blurRadius: 10,
-                    offset: const Offset(0, 5),
+                    color: Colors.black.withOpacity(0.1),
+                    blurRadius: 5,
+                    offset: const Offset(0, 1),
                   ),
                 ],
               ),
@@ -54,7 +53,6 @@ class CategoryCardWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8), 
-            // The Text Label
             Text(
               category.name,
               style: const TextStyle(

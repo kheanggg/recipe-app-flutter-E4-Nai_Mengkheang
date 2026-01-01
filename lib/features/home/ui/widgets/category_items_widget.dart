@@ -1,6 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widget_previews.dart';
 import 'package:recipe_finder_flutter/shared/domain/model/category.dart';
 import 'package:recipe_finder_flutter/features/home/ui/widgets/category_card_widget.dart';
 
