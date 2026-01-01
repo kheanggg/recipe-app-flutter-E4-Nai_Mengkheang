@@ -35,12 +35,25 @@ Future<List<Category>> homeCategories(Ref ref) async {
 // -----------------------------------------------------------------------------
 @riverpod
 Future<List<Meal>> homeMeals(Ref ref, {String? category}) async {
-  final service = ref.watch(mealServiceProvider); // use the service
+  final service = ref.watch(mealServiceProvider);
 
-  // if category is null, get all meals; otherwise, filter by category
   if (category != null && category.isNotEmpty) {
     return service.getMealsByCategory(category);
   } else {
     return service.getMeals();
   }
+}
+
+@riverpod
+Future<List<String>> homeCuisines(Ref ref) async {
+  final meals = await ref.watch(homeMealsProvider(category: null).future);
+
+  final cuisines = meals
+      .map((meal) => meal.area)
+      .whereType<String>()         
+      .toSet()                 
+      .toList();
+
+  cuisines.sort(); 
+  return cuisines;
 }
