@@ -60,12 +60,7 @@ class HomeScreen extends ConsumerWidget {
             cuisinesAsync.when(
               loading: () => const Center(child: CircularProgressIndicator()),
               error: (err, stack) => Center(child: Text('Error: $err')),
-              data: (cuisineList) => CuisineItemsWidget(
-                cuisines: cuisineList,
-                onSelect: (selectedCuisine) {
-                  print("Selected: $selectedCuisine");
-                },
-              ),
+              data: (cuisineList) => CuisineItemsWidget(cuisines: cuisineList)
             ),
 
             // --- Popular Meals Section ---
