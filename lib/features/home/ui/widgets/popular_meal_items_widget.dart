@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_finder_flutter/features/home/ui/widgets/popular_meal_card_widget.dart';
 import 'package:recipe_finder_flutter/routes/app_routes.dart';
+import 'package:recipe_finder_flutter/shared/domain/model/meal.dart';
 
 class PopularMealItemsWidget extends StatelessWidget {
-  final List<dynamic> meals; // Replace 'dynamic' with your Meal model
+  final List<Meal> meals;
 
   const PopularMealItemsWidget({super.key, required this.meals});
 
@@ -19,7 +20,7 @@ class PopularMealItemsWidget extends StatelessWidget {
           final meal = meals[index];
           return PopularMealCard(
             name: meal.name,
-            cuisine: meal.area ?? 'Unknown',
+            cuisine: meal.area,
             imageUrl: meal.thumbnailUrl,
             onTap: () {
               Navigator.pushNamed(

@@ -44,6 +44,9 @@ Future<List<Meal>> homeMeals(Ref ref, {String? category}) async {
   }
 }
 
+// -----------------------------------------------------------------------------
+// 4. Cuisines Data Provider
+// -----------------------------------------------------------------------------
 @riverpod
 Future<List<String>> homeCuisines(Ref ref) async {
   final meals = await ref.watch(homeMealsProvider(category: null).future);
