@@ -15,7 +15,6 @@ class MealService {
 
   MealService({ApiClient? apiClient}) : _apiClient = apiClient ?? ApiClient();
 
-  /// Fetch meals with optional query parameters
   Future<List<Meal>> getMeals({
     String? category,
     String? area,
