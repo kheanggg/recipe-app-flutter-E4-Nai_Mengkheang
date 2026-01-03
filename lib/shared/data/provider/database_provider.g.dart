@@ -122,7 +122,7 @@ final class FavoriteIdsProvider
   FavoriteIds create() => FavoriteIds();
 }
 
-String _$favoriteIdsHash() => r'05002adb7fbfb342cc72b52db94594b5ecdea565';
+String _$favoriteIdsHash() => r'636c64ab354dd7ed955d9a3863e22615d67e051f';
 
 abstract class _$FavoriteIds extends $StreamNotifier<List<String>> {
   Stream<List<String>> build();
@@ -142,3 +142,41 @@ abstract class _$FavoriteIds extends $StreamNotifier<List<String>> {
     element.handleValue(ref, created);
   }
 }
+
+@ProviderFor(favoriteMeals)
+const favoriteMealsProvider = FavoriteMealsProvider._();
+
+final class FavoriteMealsProvider
+    extends
+        $FunctionalProvider<
+          AsyncValue<List<Meal>>,
+          List<Meal>,
+          FutureOr<List<Meal>>
+        >
+    with $FutureModifier<List<Meal>>, $FutureProvider<List<Meal>> {
+  const FavoriteMealsProvider._()
+    : super(
+        from: null,
+        argument: null,
+        retry: null,
+        name: r'favoriteMealsProvider',
+        isAutoDispose: true,
+        dependencies: null,
+        $allTransitiveDependencies: null,
+      );
+
+  @override
+  String debugGetCreateSourceHash() => _$favoriteMealsHash();
+
+  @$internal
+  @override
+  $FutureProviderElement<List<Meal>> $createElement($ProviderPointer pointer) =>
+      $FutureProviderElement(pointer);
+
+  @override
+  FutureOr<List<Meal>> create(Ref ref) {
+    return favoriteMeals(ref);
+  }
+}
+
+String _$favoriteMealsHash() => r'e970bff5d1e1dcc806c392cd5c4760d76d823d2a';
