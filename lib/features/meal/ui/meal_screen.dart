@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_finder_flutter/shared/domain/model/meal.dart';
 import 'package:recipe_finder_flutter/shared/constants/app_colors.dart';
+import 'package:recipe_finder_flutter/features/meal/ui/widgets/favorite_button_widget.dart';
 
 class MealDetailScreen extends StatelessWidget {
   final Meal meal;
@@ -58,16 +59,7 @@ class MealDetailScreen extends StatelessWidget {
 
                       const SizedBox(width: 10), // Small gap
 
-                      IconButton(
-                        onPressed: () {
-                          print("Marked ${meal.name} as favorite");
-                        },
-                        icon: const Icon(
-                          Icons.favorite_border, // Use Icons.favorite for a filled heart
-                          color: Colors.red,
-                          size: 30,
-                        ),
-                      ),
+                      FavoriteButton(mealId: meal.id.toString()),
                     ],
                   ),
                   const SizedBox(height: 5),
@@ -94,12 +86,11 @@ class MealDetailScreen extends StatelessWidget {
                     meal.instructions,
                     style: const TextStyle(
                       fontSize: 16,
-                      height: 1.6, // Improves readability of long text
+                      height: 1.6,
                       color: Colors.black87,
                     ),
                   ),
 
-                  // Extra padding at the bottom for better scrolling
                   const SizedBox(height: 50),
                 ],
               ),
