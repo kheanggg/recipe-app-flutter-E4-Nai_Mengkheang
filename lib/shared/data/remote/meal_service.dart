@@ -34,15 +34,30 @@ class MealService {
         .toList();
   }
 
-  /// Fetch a single meal by ID
   Future<Meal?> getMealById(int id) async {
-    final response = await _apiClient.get<List<dynamic>>(
-      'meals',
-      params: {'id': id},
-    );
+    try {
+      final response = await _apiClient.get<dynamic>('meals/$id');
 
-    return Meal.fromJson(response.first as Map<String, dynamic>);
+      if (response == null) return null;
+
+      if (response is List && response.isNotEmpty) {
+        final first = response.first;
+        if (first is Map<String, dynamic>) {
+          return Meal.fromJson(first);
+        }
+      }
+
+      if (response is Map<String, dynamic>) {
+        return Meal.fromJson(response);
+      }
+
+      return null;
+    } catch (e) {
+      print('Error in getMealById($id): $e');
+      return null;
+    }
   }
+
 
   /// Fetch meals by category
   Future<List<Meal>> getMealsByCategory(String category) =>
